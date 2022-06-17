@@ -19,8 +19,8 @@ public class PlantController implements Runnable {
 
     @Override
     public void run() {
-        System.out.println("Plant controller works");
         while (true) {
+            System.out.println("Plant controller works");
             try {
                 Thread.sleep(1000);
             } catch (InterruptedException e) {
@@ -41,11 +41,11 @@ public class PlantController implements Runnable {
     private void checkCellPlants(Cell currentCell) {
         List<Plant> plants = currentCell.getPlants();
         if (plants != null && !plants.isEmpty()) {
-            //  Collections.shuffle(plants);
             for (Plant plant : plants) {
                 tryToReviveInOtherCell(plant, currentCell);
                 plant.killOrRevive();
             }
+            Collections.shuffle(plants);
         }
     }
 
@@ -62,9 +62,9 @@ public class PlantController implements Runnable {
         int randomCellId = ThreadLocalRandom.current().nextInt(maxCellId);
         if (randomCellId != currentCell.getId()) {
             Cell cell = area.getCellById(randomCellId);
-//            if (cell != null && cell.addPlant(plant)) {
-//                currentCell.getPlants().remove(plant); // TODO ЗДЕСЬ ПРОБЛЕМА!
-//            }
+            if (cell != null && cell.addPlant(plant)) {
+                currentCell.getPlants().remove(plant);
+            }
         }
     }
 }
