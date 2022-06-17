@@ -19,7 +19,7 @@ public class PlantController implements Runnable {
 
     @Override
     public void run() {
-        while (true) {
+        while (!SimulationController.simulationEnd) {
             System.out.println("Plant controller works");
             try {
                 Thread.sleep(1000);

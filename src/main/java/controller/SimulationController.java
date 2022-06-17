@@ -30,6 +30,7 @@ public class SimulationController {
 
     public void stop() {
         System.out.println("Stop the app");
+        simulationEnd = true;
         executor.shutdownNow();
     }
 }

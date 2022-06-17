@@ -17,13 +17,12 @@ public class AreaController implements Runnable {
     @Override
     public void run() {
         System.out.println("Area controller works");
-//        while (!SimulationController.simulationEnd) {
-        while (true) {
+        while (!SimulationController.simulationEnd) {
             drawArea();
             try {
                 Thread.sleep(1000);
             } catch (InterruptedException e) {
-                e.printStackTrace();
+                // do nothing
             }
         }
     }
