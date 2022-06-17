@@ -1,0 +1,29 @@
+package objectgeneration;
+
+import config.Configuration;
+import config.PlantConfiguration;
+import domain.plant.Plant;
+
+import java.util.ArrayList;
+import java.util.List;
+
+/**
+ * @author Sergey Muzhzukhin
+ * ¯\_(ツ)_/¯
+ */
+public class PlantGenerator {
+
+    public List<Plant> generate() {
+        Configuration configuration = Configuration.getInstance();
+        List<Plant> plants = new ArrayList<>();
+        PlantConfiguration plantConfiguration = configuration.getPlantConfigurationByName(Plant.class.getSimpleName());
+        long maxQuantity = (long) configuration.getAreaWidth() * configuration.getAreaHeight() * plantConfiguration.getMaxQuantityForCell();
+        long cycleLimit = maxQuantity > configuration.getPlantQuantity() ? configuration.getPlantQuantity() : maxQuantity;
+        configuration.setPlantQuantity((int) cycleLimit);
+        for (int i = 0; i < cycleLimit; i++) {
+            plants.add(new Plant(plantConfiguration));
+        }
+        return plants;
+    }
+
+}

@@ -1,0 +1,147 @@
+areaHeight: 20
+areaWidth: 20
+plantQuantity: 4000
+simulationDuration: 100
+plantConfigurations:
+    -   className: "Plant"
+        name: "🌱"
+        weight: 1
+        maxQuantityForCell: 200
+        lifeExpectancyLimit: 5
+        deathExpectancyLimit: 10
+animalConfigurations:
+    -   className: "Wolf"
+        name: "🐺"
+        weight: 50.0
+        maxQuantityForCell: 30
+        speed: 3
+        fullSatietyWeight: 8
+        currentHungryPercent: 100
+        startQuantity: 50
+        possibleChildQuantity: 3
+    -   className: "Fox"
+        name: "🦊"
+        weight: 8.0
+        maxQuantityForCell: 30
+        speed: 2
+        fullSatietyWeight: 2
+        currentHungryPercent: 100
+        startQuantity: 50
+        possibleChildQuantity: 3
+    -   className: "Eagle"
+        name: "🦅"
+        weight: 6.0
+        maxQuantityForCell: 20
+        speed: 3
+        fullSatietyWeight: 1
+        currentHungryPercent: 100
+        startQuantity: 50
+        possibleChildQuantity: 3
+    -   className: "Boa"
+        name: "🐍"
+        weight: 15.0
+        maxQuantityForCell: 30
+        speed: 1
+        fullSatietyWeight: 3
+        currentHungryPercent: 100
+        startQuantity: 50
+        possibleChildQuantity: 3
+    -   className: "Bear"
+        name: "🐻"
+        weight: 500.0
+        maxQuantityForCell: 5
+        speed: 2
+        fullSatietyWeight: 80
+        currentHungryPercent: 100
+        startQuantity: 50
+        possibleChildQuantity: 3
+    -   className: "Sheep"
+        name: "🐑"
+        weight: 70.0
+        maxQuantityForCell: 140
+        speed: 3
+        fullSatietyWeight: 15
+        currentHungryPercent: 100
+        startQuantity: 50
+        possibleChildQuantity: 3
+    -   className: "Rabbit"
+        name: "🐇"
+        weight: 2.0
+        maxQuantityForCell: 150
+        speed: 2
+        fullSatietyWeight: 0.45
+        currentHungryPercent: 100
+        startQuantity: 50
+        possibleChildQuantity: 3
+    -   className: "Mouse"
+        name: "🐁"
+        weight: 0.05
+        maxQuantityForCell: 500
+        speed: 1
+        fullSatietyWeight: 0.01
+        currentHungryPercent: 100
+        startQuantity: 50
+        possibleChildQuantity: 3
+    -   className: "Horse"
+        name: "🐎"
+        weight: 400.0
+        maxQuantityForCell: 20
+        speed: 4
+        fullSatietyWeight: 60
+        currentHungryPercent: 100
+        startQuantity: 50
+        possibleChildQuantity: 3
+    -   className: "Goat"
+        name: "🐐"
+        weight: 60.0
+        maxQuantityForCell: 140
+        speed: 3
+        fullSatietyWeight: 10
+        currentHungryPercent: 100
+        startQuantity: 50
+        possibleChildQuantity: 3
+    -   className: "Duck"
+        name: "🦆"
+        weight: 1.0
+        maxQuantityForCell: 200
+        speed: 4
+        fullSatietyWeight: 0.15
+        currentHungryPercent: 100
+        startQuantity: 50
+        possibleChildQuantity: 3
+    -   className: "Deer"
+        name: "🦌"
+        weight: 300.0
+        maxQuantityForCell: 20
+        speed: 4
+        fullSatietyWeight: 50
+        currentHungryPercent: 100
+        startQuantity: 50
+        possibleChildQuantity: 3
+    -   className: "Caterpillar"
+        name: "🐛"
+        weight: 0.01
+        maxQuantityForCell: 1000
+        speed: 0
+        fullSatietyWeight: 0
+        currentHungryPercent: 100
+        startQuantity: 50
+        possibleChildQuantity: 3
+    -   className: "Buffalo"
+        name: "🐃"
+        weight: 700.0
+        maxQuantityForCell: 10
+        speed: 3
+        fullSatietyWeight: 100
+        currentHungryPercent: 100
+        startQuantity: 50
+        possibleChildQuantity: 3
+    -   className: "Boar"
+        name: "🐗"
+        weight: 400.0
+        maxQuantityForCell: 50
+        speed: 2
+        fullSatietyWeight: 50
+        currentHungryPercent: 100
+        startQuantity: 50
+        possibleChildQuantity: 3
