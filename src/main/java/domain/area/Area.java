@@ -97,13 +97,10 @@ public class Area {
         Cell result = null;
         int areaWidth = Configuration.getInstance().getAreaWidth();
         int startRow = (int) Math.floor(cellId / areaWidth);
-        System.out.println("Find ID: " + cellId);
-        System.out.println("StartRow: " + startRow);
         synchronized (cells) {
             for (int i = 0; i < areaWidth; i++) {
                 Cell element = cells[startRow][i];
                 if (cellId == element.getId()) {
-                    System.out.println("Element found!");
                     result = element;
                     break;
                 }

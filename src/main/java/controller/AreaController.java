@@ -32,8 +32,8 @@ public class AreaController implements Runnable {
         System.out.println("--------------------------------");
         for (Cell[] cell : area.getCells()) {
             for (Cell value : cell) {
-                System.out.print(value.getId() +  " ");
-//                drawPlants(value);
+//                System.out.print(value.getId() +  " ");
+                drawPlants(value);
             }
             System.out.println("");
         }
