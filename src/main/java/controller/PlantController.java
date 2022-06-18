@@ -63,7 +63,7 @@ public class PlantController implements Runnable {
         if (randomCellId != currentCell.getId()) {
             Cell cell = area.getCellById(randomCellId);
             if (cell != null && cell.addPlant(plant)) {
-                currentCell.getPlants().remove(plant);
+                currentCell.removePlant(plant);
             }
         }
     }

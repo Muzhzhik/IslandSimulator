@@ -1,13 +1,13 @@
 package domain.area;
 
 import config.Configuration;
+import domain.animal.Animal;
 import domain.plant.Plant;
+import objectgeneration.AnimalGenerator;
 import objectgeneration.PlantGenerator;
 import lombok.Getter;
 
-import java.util.LinkedList;
-import java.util.Queue;
-import java.util.Random;
+import java.util.*;
 
 /**
  * @author Sergey Muzhzukhin
@@ -47,28 +47,48 @@ public class Area {
 
     private void addAnimals() {
         System.out.println("Adding animals");
-     //   Queue<Animal> animals = new LinkedList<>(new AnimalGenerator().generate());
+        Queue<Animal> animals = new LinkedList<>(new AnimalGenerator().generate());
+        List<Cell> cellList = shuffleCells();
+        while(!animals.isEmpty()) {
+            for (Cell cell : cellList) {
+                if (animals.isEmpty()) {
+                    break;
+                }
+                addRandomAnimalQuantity(cell, animals);
+            }
+        }
+    }
+
+    private void addRandomAnimalQuantity(Cell cell, Queue<Animal> animals) {
+        Random random = new Random();
+        int randomInt = random.nextInt(10);
+        if (animals.size() < 3) {
+            randomInt = animals.size();
+        }
+
+        for (int i = 0; i < randomInt; i++) {
+            if (animals.isEmpty()) {
+                break;
+            }
+            Animal animal = animals.peek();
+            if (cell.addAnimal(animal)){
+                animals.remove();
+            } else {
+                break;
+            }
+        }
     }
 
     private void addPlants() {
         System.out.println("Adding plants");
         Queue<Plant> plants = new LinkedList<>(new PlantGenerator().generate());
-        boolean stop = false;
-        while (!plants.isEmpty()) {
-            if (stop) {
-                break;
-            }
-            for (Cell[] cell : cells) {
-                if (stop) {
+        List<Cell> cellList = shuffleCells();
+        while(!plants.isEmpty()) {
+            for (Cell cell : cellList) {
+                if (plants.isEmpty()) {
                     break;
                 }
-                for (Cell value : cell) {
-                    if (plants.isEmpty()) {
-                        stop = true;
-                        break;
-                    }
-                    addRandomPlantsQuantity(value, plants);
-                }
+                addRandomPlantsQuantity(cell, plants);
             }
         }
     }
@@ -91,6 +111,15 @@ public class Area {
                 break;
             }
         }
+    }
+
+    private List<Cell> shuffleCells() {
+        List<Cell> cellList = new ArrayList<>();
+        for(Cell[] cells : cells) {
+            cellList.addAll(Arrays.asList(cells));
+        }
+        Collections.shuffle(cellList);
+        return cellList;
     }
 
     public Cell getCellById(int cellId) {

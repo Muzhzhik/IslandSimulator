@@ -13,8 +13,9 @@ import java.util.List;
  */
 public class PlantGenerator {
 
+    Configuration configuration = Configuration.getInstance();
+
     public List<Plant> generate() {
-        Configuration configuration = Configuration.getInstance();
         List<Plant> plants = new ArrayList<>();
         PlantConfiguration plantConfiguration = configuration.getPlantConfigurationByName(Plant.class.getSimpleName());
         long maxQuantity = (long) configuration.getAreaWidth() * configuration.getAreaHeight() * plantConfiguration.getMaxQuantityForCell();

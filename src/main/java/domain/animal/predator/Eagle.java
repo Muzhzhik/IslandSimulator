@@ -1,5 +1,6 @@
 package domain.animal.predator;
 
+import config.AnimalConfiguration;
 import lombok.Getter;
 
 /**
@@ -8,4 +9,7 @@ import lombok.Getter;
  */
 @Getter
 public class Eagle extends Predator {
+    public Eagle(AnimalConfiguration configuration) {
+        super(configuration);
+    }
 }

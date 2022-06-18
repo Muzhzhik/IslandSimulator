@@ -1,5 +1,6 @@
 package controller;
 
+import domain.animal.Animal;
 import domain.area.Area;
 import domain.area.Cell;
 import domain.plant.Plant;
@@ -32,7 +33,8 @@ public class AreaController implements Runnable {
         for (Cell[] cell : area.getCells()) {
             for (Cell value : cell) {
 //                System.out.print(value.getId() +  " ");
-                drawPlants(value);
+//                drawPlants(value);
+                drawAnimals(value);
             }
             System.out.println("");
         }
@@ -44,6 +46,20 @@ public class AreaController implements Runnable {
             Plant plant = plants.get(0);
             if (plant.isAlive()) {
                 System.out.print(plant.getName() + " ");
+            } else {
+                System.out.print("\uD83C\uDF42 ");
+            }
+        } else {
+            System.out.print("\uD83C\uDF41" + " ");
+        }
+    }
+
+    private void drawAnimals(Cell cell) {
+        List<Animal> animals = cell.getAnimals();
+        if (animals != null && !animals.isEmpty()) {
+            Animal animal = animals.get(0);
+            if (animal != null) {
+                System.out.print(animal.getName() + " ");
             } else {
                 System.out.print("\uD83C\uDF42 ");
             }

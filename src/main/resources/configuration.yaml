@@ -1,7 +1,7 @@
 areaHeight: 20
 areaWidth: 20
-plantQuantity: 4000
-simulationDuration: 100
+plantQuantity: 400
+simulationDuration: 10
 plantConfigurations:
     -   className: "Plant"
         name: "🌱"

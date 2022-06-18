@@ -11,10 +11,9 @@ import utils.Constants;
  */
 @NoArgsConstructor
 @Getter
-@Setter
 public class AnimalConfiguration {
     private String className;
-    private String name = Constants.ANIMAL_DEFAULT_NAME;
+    private String name;
     private double weight;
     private int maxQuantityForCell;
     private int speed;

@@ -1,5 +1,6 @@
 package domain.animal.predator;
 
+import config.AnimalConfiguration;
 import lombok.Getter;
 
 /**
@@ -7,5 +8,8 @@ import lombok.Getter;
  * ¯\_(ツ)_/¯
  */
 @Getter
-public class Boa {
+public class Boa extends Predator {
+    public Boa(AnimalConfiguration configuration) {
+        super(configuration);
+    }
 }

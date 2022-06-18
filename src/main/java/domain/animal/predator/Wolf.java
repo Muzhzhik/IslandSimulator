@@ -1,5 +1,6 @@
 package domain.animal.predator;
 
+import config.AnimalConfiguration;
 import lombok.Getter;
 
 /**
@@ -8,5 +9,7 @@ import lombok.Getter;
  */
 @Getter
 public class Wolf extends Predator {
-    private String name = "wolf";
+    public Wolf(AnimalConfiguration configuration) {
+        super(configuration);
+    }
 }

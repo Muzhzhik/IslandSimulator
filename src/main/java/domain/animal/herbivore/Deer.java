@@ -1,5 +1,6 @@
 package domain.animal.herbivore;
 
+import config.AnimalConfiguration;
 import lombok.Getter;
 
 /**
@@ -8,4 +9,7 @@ import lombok.Getter;
  */
 @Getter
 public class Deer extends Herbivore {
+    public Deer(AnimalConfiguration configuration) {
+        super(configuration);
+    }
 }
