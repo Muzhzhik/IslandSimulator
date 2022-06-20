@@ -23,7 +23,7 @@ public class SimulationController {
     public void start() {
         System.out.println("Start the app");
         executor.submit(new AreaController());
-        executor.submit(new CellController());
+        executor.submit(new AnimalController());
         executor.submit(new PlantController());
         executor.shutdown();
     }

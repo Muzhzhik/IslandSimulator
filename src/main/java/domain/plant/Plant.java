@@ -12,11 +12,11 @@ import java.util.Random;
  */
 @Getter
 public class Plant {
-    private String name;
-    private int weight;
-    private int maxQuantityForCell;
-    private int lifeExpectancyLimit; // seconds
-    private int deathExpectancyLimit;
+    private final String name;
+    private final int weight;
+    private final int maxQuantityForCell;
+    private final int lifeExpectancyLimit; // seconds
+    private final int deathExpectancyLimit;
     private long createTime = new Date().getTime();
     private volatile boolean alive = true;
 

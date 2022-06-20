@@ -21,12 +21,16 @@ public class PlantController implements Runnable {
     public void run() {
         while (!SimulationController.simulationEnd) {
             System.out.println("Plant controller works");
-            try {
-                Thread.sleep(1000);
-            } catch (InterruptedException e) {
-                // Do nothing
-            }
+            sleep();
             checkAllPlants();
+        }
+    }
+
+    private void sleep() {
+        try {
+            Thread.sleep(3000);
+        } catch (InterruptedException e) {
+            // Do nothing
         }
     }
 

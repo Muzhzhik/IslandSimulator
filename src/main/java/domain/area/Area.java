@@ -122,10 +122,10 @@ public class Area {
         return cellList;
     }
 
-    public Cell getCellById(int cellId) {
+    public synchronized Cell getCellById(int cellId) {
         Cell result = null;
         int areaWidth = Configuration.getInstance().getAreaWidth();
-        int startRow = (int) Math.floor(cellId / areaWidth);
+        int startRow = (int) Math.floor((cellId > 1 ? (cellId - 1) : cellId) * 1.0 / areaWidth);
         synchronized (cells) {
             for (int i = 0; i < areaWidth; i++) {
                 Cell element = cells[startRow][i];
@@ -134,6 +134,9 @@ public class Area {
                     break;
                 }
             }
+        }
+        if (result == null) {
+            System.err.println("Cell.getCellById() has null result.");
         }
         return result;
     }
