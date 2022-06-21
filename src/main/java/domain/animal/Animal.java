@@ -59,12 +59,12 @@ public abstract class Animal implements FoodChainMember {
                             .findAny();
 
                     optionalAnimal.ifPresent(foodChainMember -> eatAnimal((Animal) foodChainMember, cell));
-
+                }
+                if (random < 70) {
                     Optional<? extends FoodChainMember> optionalPlant = cell.getPlants().stream()
                             .findAny();
 
                     optionalPlant.ifPresent(foodChainMember -> eatPlant((Plant) foodChainMember, cell));
-
                 }
             }
         }
@@ -142,7 +142,7 @@ public abstract class Animal implements FoodChainMember {
             //up
             for (int i = 1; i <= speed; i++) {
                 int possibleCellId = currentCellId - areaWidth * i;
-                if (possibleCellId > 0 && possibleCellId < maxCellId) {
+                if (possibleCellId > 0 && possibleCellId <= maxCellId) {
                     cellsPossibleToMove.add(possibleCellId);
                     cellsPossibleToMove.addAll(getCellsRightAndLeftFromCurrent(possibleCellId, speed - i));
                 } else {
@@ -152,7 +152,7 @@ public abstract class Animal implements FoodChainMember {
             // down
             for (int i = 1; i <= speed; i++) {
                 int possibleCellId = currentCellId + Configuration.getInstance().getAreaWidth() * i;
-                if (possibleCellId > 0 && possibleCellId < maxCellId) {
+                if (possibleCellId > 0 && possibleCellId <= maxCellId) {
                     cellsPossibleToMove.add(possibleCellId);
                     cellsPossibleToMove.addAll(getCellsRightAndLeftFromCurrent(possibleCellId, speed - i));
                 } else {
@@ -173,7 +173,7 @@ public abstract class Animal implements FoodChainMember {
             //To right
             for (int i = 1; i <= count; i++) {
                 int cellId = currentCellId + i;
-                if (cellId > 0 && cellId < maxCellId) {
+                if (cellId > 0 && cellId <= maxCellId) {
                     cells.add(cellId);
                 } else {
                     break;
@@ -182,7 +182,7 @@ public abstract class Animal implements FoodChainMember {
             //To left
             for (int i = 1; i <= count; i++) {
                 int cellId = currentCellId - i;
-                if (cellId > 0 && cellId < maxCellId) {
+                if (cellId > 0 && cellId <= maxCellId) {
                     cells.add(cellId);
                 } else {
                     break;

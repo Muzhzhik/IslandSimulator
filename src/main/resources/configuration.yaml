@@ -1,7 +1,7 @@
 areaHeight: 20
 areaWidth: 20
-plantQuantity: 400
-simulationDuration: 1000
+plantQuantity: 4000
+simulationDuration: 2000
 plantConfigurations:
     -   className: "Plant"
         name: "🌱"
@@ -45,7 +45,7 @@ animalConfigurations:
         fullSatietyWeight: 3
         currentHungryPercent: 100
         startQuantity: 50
-        possibleChildQuantity: 3
+        possibleChildQuantity: 6
     -   className: "Bear"
         name: "🐻"
         weight: 500.0
@@ -54,7 +54,7 @@ animalConfigurations:
         fullSatietyWeight: 80
         currentHungryPercent: 100
         startQuantity: 50
-        possibleChildQuantity: 3
+        possibleChildQuantity: 2
     -   className: "Sheep"
         name: "🐑"
         weight: 70.0
@@ -72,7 +72,7 @@ animalConfigurations:
         fullSatietyWeight: 0.45
         currentHungryPercent: 100
         startQuantity: 50
-        possibleChildQuantity: 3
+        possibleChildQuantity: 5
     -   className: "Mouse"
         name: "🐁"
         weight: 0.05
@@ -81,7 +81,7 @@ animalConfigurations:
         fullSatietyWeight: 0.01
         currentHungryPercent: 100
         startQuantity: 50
-        possibleChildQuantity: 3
+        possibleChildQuantity: 8
     -   className: "Horse"
         name: "🐎"
         weight: 400.0
@@ -90,7 +90,7 @@ animalConfigurations:
         fullSatietyWeight: 60
         currentHungryPercent: 100
         startQuantity: 50
-        possibleChildQuantity: 3
+        possibleChildQuantity: 1
     -   className: "Goat"
         name: "🐐"
         weight: 60.0
@@ -108,7 +108,7 @@ animalConfigurations:
         fullSatietyWeight: 0.15
         currentHungryPercent: 100
         startQuantity: 50
-        possibleChildQuantity: 3
+        possibleChildQuantity: 4
     -   className: "Deer"
         name: "🦌"
         weight: 300.0
@@ -117,7 +117,7 @@ animalConfigurations:
         fullSatietyWeight: 50
         currentHungryPercent: 100
         startQuantity: 50
-        possibleChildQuantity: 3
+        possibleChildQuantity: 2
     -   className: "Caterpillar"
         name: "🐛"
         weight: 0.01
@@ -126,7 +126,7 @@ animalConfigurations:
         fullSatietyWeight: 0
         currentHungryPercent: 100
         startQuantity: 50
-        possibleChildQuantity: 3
+        possibleChildQuantity: 30
     -   className: "Buffalo"
         name: "🐃"
         weight: 700.0
@@ -135,7 +135,7 @@ animalConfigurations:
         fullSatietyWeight: 100
         currentHungryPercent: 100
         startQuantity: 50
-        possibleChildQuantity: 3
+        possibleChildQuantity: 2
     -   className: "Boar"
         name: "🐗"
         weight: 400.0
