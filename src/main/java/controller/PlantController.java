@@ -64,6 +64,9 @@ public class PlantController implements Runnable {
     private void movePlantToAnotherCell(Plant plant, Cell currentCell) {
         final int maxCellId = Configuration.getInstance().getAreaHeight() * Configuration.getInstance().getAreaHeight();
         int randomCellId = ThreadLocalRandom.current().nextInt(maxCellId);
+        if (randomCellId == 0) {
+            randomCellId = 1;
+        }
         if (randomCellId != currentCell.getId()) {
             Cell cell = area.getCellById(randomCellId);
             if (cell != null && cell.addPlant(plant)) {

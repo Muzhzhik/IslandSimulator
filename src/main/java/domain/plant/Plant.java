@@ -1,6 +1,7 @@
 package domain.plant;
 
 import config.PlantConfiguration;
+import domain.FoodChainMember;
 import lombok.Getter;
 
 import java.util.Date;
@@ -11,7 +12,7 @@ import java.util.Random;
  * ¯\_(ツ)_/¯
  */
 @Getter
-public class Plant {
+public class Plant implements FoodChainMember {
     private final String name;
     private final int weight;
     private final int maxQuantityForCell;
@@ -35,12 +36,16 @@ public class Plant {
 
     public void killOrRevive() {
         if (alive && plantMustDie()) {
-            alive = false;
-            deadTime = new Date().getTime();
+            kill();
         } else if (!alive && plantMustRevive()) {
             alive = true;
             createTime = new Date().getTime();
         }
+    }
+
+    public void kill() {
+        alive = false;
+        deadTime = new Date().getTime();
     }
 
     private boolean plantMustDie() {

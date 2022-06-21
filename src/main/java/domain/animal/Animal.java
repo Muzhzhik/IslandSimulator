@@ -2,13 +2,16 @@ package domain.animal;
 
 import config.AnimalConfiguration;
 import config.Configuration;
+import domain.FoodChainMember;
 import domain.area.Area;
 import domain.area.Cell;
+import domain.plant.Plant;
 import lombok.Getter;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Optional;
 import java.util.concurrent.ThreadLocalRandom;
 
 /**
@@ -16,7 +19,7 @@ import java.util.concurrent.ThreadLocalRandom;
  * ¯\_(ツ)_/¯
  */
 @Getter
-public abstract class Animal {
+public abstract class Animal implements FoodChainMember {
     private final String name;
     private final double weight;
     private final int maxQuantityForCell;
@@ -42,19 +45,78 @@ public abstract class Animal {
     }
 
     public void eat() {
-        currentHungryPercent -= 5;
+        currentHungryPercent -= 1;
+        Cell cell = area.getCellById(currentCellId);
+        if (cell != null) {
+            if (currentHungryPercent < 0) {
+                //System.out.println(this.getName() + " died from hunger");
+                cell.removeAnimal(this);
+            } else {
+                int random = ThreadLocalRandom.current().nextInt(100);
+                if (random < 50) {
+                    Optional<? extends FoodChainMember> optionalAnimal = cell.getAnimals().stream()
+                            .filter(a -> !a.getClass().getSimpleName().equals(this.getClass().getSimpleName()))
+                            .findAny();
+
+                    optionalAnimal.ifPresent(foodChainMember -> eatAnimal((Animal) foodChainMember, cell));
+
+                    Optional<? extends FoodChainMember> optionalPlant = cell.getPlants().stream()
+                            .findAny();
+
+                    optionalPlant.ifPresent(foodChainMember -> eatPlant((Plant) foodChainMember, cell));
+
+                }
+            }
+        }
     }
 
-    public void reproduce() {
-        int random = ThreadLocalRandom.current().nextInt(100);
-        if (random > 70) {
+    private void eatPlant(Plant victim, Cell cell) {
+        if (victim != null) {
+            int random = ThreadLocalRandom.current().nextInt(100);
+            if (random > 0 && random <= Configuration.getInstance().getEatChance(this, victim)) {
+                if (victim.getWeight() >= this.fullSatietyWeight) {
+                    this.currentHungryPercent = 100;
+                } else {
+                    this.currentHungryPercent += victim.getWeight();
+                }
+//                System.out.println(this.getName() + " eat " + victim.getName());
+                victim.kill();
+            }
+        }
+    }
 
+    private void eatAnimal(Animal victim, Cell cell) {
+        if (victim != null) {
+            int random = ThreadLocalRandom.current().nextInt(100);
+            if (random > 0 && random < Configuration.getInstance().getEatChance(this, victim)) {
+                if (victim.getWeight() >= this.fullSatietyWeight) {
+                    this.currentHungryPercent = 100;
+                } else {
+                    this.currentHungryPercent += victim.getWeight();
+                }
+//                System.out.println(this.getName() + " eat " + victim.getName());
+                cell.removeAnimal(victim);
+            }
+        }
+    }
+
+    public void reproduce(Animal animal) {
+        if (animal != null && this.getClass().getSimpleName().equals(animal.getClass().getSimpleName())
+                && this.sex == AnimalSex.FEMALE && animal.sex == AnimalSex.MALE) {
+            int random = ThreadLocalRandom.current().nextInt(100);
+            if (random > 70) { //TODO Maybe to configuration.yaml ReproduceProbability
+                for (int i = 0; i < ThreadLocalRandom.current().nextInt(possibleChildQuantity); i++) {
+                    Cell cell = area.getCellById(currentCellId);
+                    cell.addAnimal(new AnimalFactory().createByName(this.getClass().getSimpleName()));
+//                    System.out.println(animal.getName() + " born!");
+                }
+            }
         }
     }
 
     public void relocate() {
-        int random = ThreadLocalRandom.current().nextInt(25);
-        if (random > 20) {
+        int random = ThreadLocalRandom.current().nextInt(100);
+        if (random > 50) {
             int previousCellId = currentCellId;
             for (int cellId : getPossibleCellsToMove()) {
                 if (cellId == currentCellId) {

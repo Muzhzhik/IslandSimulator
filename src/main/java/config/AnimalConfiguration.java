@@ -2,8 +2,6 @@ package config;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
-import utils.Constants;
 
 /**
  * @author Sergey Muzhzukhin

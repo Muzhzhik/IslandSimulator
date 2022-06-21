@@ -1,14 +1,7 @@
 package controller;
 
-import domain.area.Area;
-import domain.area.Cell;
-import domain.plant.Plant;
-import utils.Constants;
-
-import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
-import java.util.concurrent.TimeUnit;
 
 /**
  * @author Sergey Muzhzukhin

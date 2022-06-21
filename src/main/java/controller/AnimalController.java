@@ -4,9 +4,9 @@ import domain.animal.Animal;
 import domain.area.Area;
 import domain.area.Cell;
 
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
+import java.util.Optional;
+import java.util.stream.Collectors;
 
 /**
  * @author Sergey Muzhzukhin
@@ -24,16 +24,26 @@ public class AnimalController implements Runnable {
             for (Cell[] cells : area.getCells()) {
                 for (Cell cell : cells) {
                     List<Animal> animals = cell.getAnimals();
-                  //  System.out.println(animals.size());
                     for (Animal animal : animals) {
                         animal.eat();
-                        animal.reproduce();
+                        animal.reproduce(getAnimalPair(animals, animal));
                         animal.relocate();
-                        break;
                     }
                 }
             }
         }
+    }
+
+    private Animal getAnimalPair(List<Animal> animals, Animal currentAnimal) {
+        Animal pair = null;
+        Optional<Animal> animalPair = animals.stream()
+                .filter(a -> a.getClass().getSimpleName().equals(currentAnimal.getClass().getSimpleName()))
+                .filter(a -> a != currentAnimal)
+                .collect(Collectors.toList()).stream().findAny();
+        if (animalPair.isPresent()) {
+            pair = animalPair.get();
+        }
+        return pair;
     }
 
     private void sleep() {
