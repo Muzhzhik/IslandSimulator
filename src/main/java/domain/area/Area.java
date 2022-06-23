@@ -19,7 +19,6 @@ public class Area {
     private static Area area;
     Configuration configuration = Configuration.getInstance();
     private final Cell[][] cells = new Cell[configuration.getAreaHeight()][configuration.getAreaWidth()];
-//    private int[][] cellsIdTable;
 
     private Area() {};
 
@@ -35,7 +34,6 @@ public class Area {
         initCells();
         addAnimals();
         addPlants();
-       // getCellIdTable();
     }
 
     private void initCells() {
@@ -143,25 +141,4 @@ public class Area {
         return result;
     }
 
-//    public int[][] getCellIdTable() {
-//        if (cellsIdTable == null) {
-//            int height = cells.length;
-//            int width = cells[0].length;
-//            cellsIdTable = new int[height][width];
-//            for (int i = 0; i < height; i++) {
-//                for (int j = 0; j < width; j++) {
-//                    cellsIdTable[i][j] = cells[i][j].getId();
-////                    String sCellId = cellsIdTable[i][j] + "";
-////                    if (sCellId.length() == 1) {
-////                        sCellId = " " + sCellId + " ";
-////                    } else if (sCellId.length() == 2) {
-////                        sCellId = " " + sCellId;
-////                    }
-////                    System.out.print(sCellId + " ");
-//                }
-////                System.out.println("");
-//            }
-//        }
-//        return cellsIdTable;
-//    }
 }
