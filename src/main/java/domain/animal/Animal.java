@@ -45,7 +45,7 @@ public abstract class Animal implements FoodChainMember {
     }
 
     public void eat() {
-        currentHungryPercent -= 1;
+        currentHungryPercent -= 5;
         Cell cell = area.getCellById(currentCellId);
         if (cell != null) {
             if (currentHungryPercent < 0) {

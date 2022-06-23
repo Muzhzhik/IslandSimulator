@@ -1,5 +1,5 @@
-areaHeight: 20
-areaWidth: 20
+areaHeight: 40
+areaWidth: 40
 plantQuantity: 4000
 simulationDuration: 2000
 plantConfigurations:

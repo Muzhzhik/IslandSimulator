@@ -43,8 +43,6 @@ public class Configuration {
     private Configuration() {
     }
 
-    ;
-
     public static Configuration getInstance() {
         if (configuration == null) {
             ObjectMapper mapper = new YAMLMapper();

@@ -21,9 +21,11 @@ public class AnimalController implements Runnable {
         while (!SimulationController.simulationEnd) {
             System.out.println("Animal controller works");
             sleep();
+            int animalCount = 0;
             for (Cell[] cells : area.getCells()) {
                 for (Cell cell : cells) {
                     List<Animal> animals = cell.getAnimals();
+                    animalCount += animals.size();
                     for (Animal animal : animals) {
                         animal.eat();
                         animal.reproduce(getAnimalPair(animals, animal));
@@ -31,6 +33,7 @@ public class AnimalController implements Runnable {
                     }
                 }
             }
+            System.out.println("AnimalCount: ~" + animalCount);
         }
     }
 
