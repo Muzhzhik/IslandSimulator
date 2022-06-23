@@ -50,10 +50,10 @@ public class AreaController implements Runnable {
             if (plant.isAlive()) {
                 System.out.print(plant.getName() + " ");
             } else {
-                System.out.print("\uD83C\uDF42 ");
+                System.out.print("\uD83D\uDC63 ");
             }
         } else {
-            System.out.print("\uD83C\uDF41" + " ");
+            System.out.print("\uD83D\uDC63" + " ");
         }
     }
 
@@ -64,10 +64,10 @@ public class AreaController implements Runnable {
             if (animal != null) {
                 System.out.print(animal.getName() + " ");
             } else {
-                System.out.print("\uD83C\uDF42 ");
+                System.out.print("\uD83D\uDC63 ");
             }
         } else {
-            System.out.print("\uD83C\uDF41" + " ");
+            System.out.print("\uD83D\uDC63" + " ");
         }
     }
 }
