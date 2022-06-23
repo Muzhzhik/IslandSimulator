@@ -49,7 +49,7 @@ public abstract class Animal implements FoodChainMember {
         Cell cell = area.getCellById(currentCellId);
         if (cell != null) {
             if (currentHungryPercent < 0) {
-                System.out.print(this.getName() + " DFH. ");
+               // System.out.print(this.getName() + " DFH. ");
                 cell.removeAnimal(this);
             } else {
                 int random = ThreadLocalRandom.current().nextInt(100);
@@ -108,7 +108,7 @@ public abstract class Animal implements FoodChainMember {
                 for (int i = 0; i < ThreadLocalRandom.current().nextInt(possibleChildQuantity); i++) {
                     Cell cell = area.getCellById(currentCellId);
                     cell.addAnimal(new AnimalFactory().createByName(this.getClass().getSimpleName()));
-                    System.out.print(animal.getName() + " born! ");
+//                    System.out.print(animal.getName() + " born! ");
                 }
             }
         }
