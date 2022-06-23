@@ -46,7 +46,7 @@ public class AreaController implements Runnable {
     private void drawPlants(Cell cell) {
         List<Plant> plants = cell.getPlants();
         if (plants != null && !plants.isEmpty()) {
-            Plant plant = plants.get(0);
+            Plant plant = plants.stream().findAny().get();
             if (plant.isAlive()) {
                 System.out.print(plant.getName() + " ");
             } else {
@@ -63,8 +63,6 @@ public class AreaController implements Runnable {
             Animal animal = animals.get(0);
             if (animal != null) {
                 System.out.print(animal.getName() + " ");
-            } else {
-                System.out.print("\uD83D\uDC63 ");
             }
         } else {
             System.out.print("\uD83D\uDC63" + " ");

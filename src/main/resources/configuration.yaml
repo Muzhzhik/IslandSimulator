@@ -1,6 +1,6 @@
 areaHeight: 30
 areaWidth: 30
-plantQuantity: 400
+plantQuantity: 2500
 simulationDuration: 2000
 plantConfigurations:
     -   className: "Plant"
